@@ -7,10 +7,10 @@ import authService from '../services/auth.service'
 import userService from '../services/user.service'
 import { setUserData } from '../features/userSlice'
 import { User } from '../types/interfaces'
-import { EyeIcon } from '../assets/icons/EyeIcon'
-import { EyeSlashIcon } from '../assets/icons/EyeSlashIcon'
-import { SunIcon } from '../assets/icons/SunIcon'
-import { MoonIcon } from '../assets/icons/MoonIcon'
+import { EyeIcon } from '../components/icons/EyeIcon'
+import { EyeSlashIcon } from '../components/icons/EyeSlashIcon'
+import { SunIcon } from '../components/icons/SunIcon'
+import { MoonIcon } from '../components/icons/MoonIcon'
 
 export default function Login<ReactNode>(props: {
   test: string
