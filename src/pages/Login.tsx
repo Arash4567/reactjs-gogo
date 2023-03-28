@@ -130,7 +130,7 @@ export default function Login<ReactNode>(props: {
                 </button> */}
               </div>
               <div className="flex flex-col justify-center flex-1 mb-0 md:mb-5">
-                <h3 className="text-4xl font-semibold text-center dark:text-gray-300">KIRISH</h3>
+                <h3 className="text-4xl font-semibold text-gray-900 text-center dark:text-gray-300">KIRISH</h3>
                 <p className="px-10 my-5 text-sm text-center text-gray-500 dark:text-gray-400">Tizimga kirish uchun telefon
                   raqamingiz va
                   parolingizni kiritishgingiz lozim!</p>
