@@ -11,16 +11,11 @@ import { EyeIcon } from '../components/icons/EyeIcon'
 import { EyeSlashIcon } from '../components/icons/EyeSlashIcon'
 import { SunIcon } from '../components/icons/SunIcon'
 import { MoonIcon } from '../components/icons/MoonIcon'
+import Switcher from '../components/Switcher'
 
 export default function Login<ReactNode>(props: {
   test: string
 }) {
-
-  const [darkMode, setDarkMode] = React.useState(true)
-
-  const toggleDarkMode = () => {
-    setDarkMode(prevDarkMode => !prevDarkMode)
-  }
 
   const { isOpenModal } = useAppSelector(state => state.resetPasswordModalSlice)
   const userInfo = useAppSelector(state => state.userSlice)
@@ -122,16 +117,17 @@ export default function Login<ReactNode>(props: {
             <div className="flex flex-col w-full p-4 xl:w-1/2">
               <div className="flex justify-between">
                 <div className="flex items-center">
-                  <img src="../assets/images/logo.png" className="w-8 ml-2 shrink-0" alt="#" />
+                  <img src="/images/logo.png" className="w-8 ml-2 shrink-0" alt="#" />
                   <div className="ml-2 text-lg font-semibold text-gray-900 dark:text-gray-300 grow">IT-Forelead</div>
                 </div>
-                <button onClick={() => toggleDarkMode()}
+                <Switcher/>
+                {/* <button onClick={() => toggleDarkMode()}
                   className="relative inline-block p-2 rounded-full shadow bg-slate-100 hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-700">
                   {
                     darkMode ? <MoonIcon className="w-5 h-5 text-black dark:text-gray-500" />
                       : <SunIcon className="w-5 h-5 text-black dark:text-gray-500" />
                   }
-                </button>
+                </button> */}
               </div>
               <div className="flex flex-col justify-center flex-1 mb-0 md:mb-5">
                 <h3 className="text-4xl font-semibold text-center dark:text-gray-300">KIRISH</h3>
@@ -193,7 +189,7 @@ export default function Login<ReactNode>(props: {
               <div className="text-xs text-center text-gray-400 dark:text-gray-400">All rights reserved. &copy; <a
                 href="https://t.me/trimuzsupport" className="hover:underline">IT-Forelead</a> 2022</div>
             </div>
-            <div className="hidden xl:block bg-image rounded-r-3xl md:w-2/3">
+            <div className="hidden xl:block bg-[url('/images/bg-login.jpg')] bg-cover bg-center rounded-r-3xl md:w-2/3">
               <div className="flex items-center justify-center h-full">
                 <div
                   className="w-full px-10 py-16 text-white xl:mx-16 2xl:mx-32 rounded-xl backdrop-blur-sm backdrop-contrast-50">
