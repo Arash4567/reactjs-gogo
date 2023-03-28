@@ -6,16 +6,18 @@ import { toggleModal } from '../features/modal/resetPasswordModalSlice'
 import authService from '../services/auth.service'
 import userService from '../services/user.service'
 import { setUserData } from '../features/userSlice'
-import { User } from '../types/interfaces'
+import { User } from '../models/interfaces'
 import { EyeIcon } from '../components/icons/EyeIcon'
 import { EyeSlashIcon } from '../components/icons/EyeSlashIcon'
-import { SunIcon } from '../components/icons/SunIcon'
-import { MoonIcon } from '../components/icons/MoonIcon'
 import Switcher from '../components/Switcher'
+import { SpinIcon } from '../components/icons/SpinIcon'
+import { Link, useNavigate } from 'react-router-dom'
+import InputMask from "react-input-mask";
 
 export default function Login<ReactNode>(props: {
   test: string
 }) {
+  const navigate = useNavigate()
 
   const { isOpenModal } = useAppSelector(state => state.resetPasswordModalSlice)
   const userInfo = useAppSelector(state => state.userSlice)
@@ -66,43 +68,53 @@ export default function Login<ReactNode>(props: {
     )
   }
 
-  const onSubmit = (user: User) => {
+  const handlePhone = (event: any): void => {
+    setPhone(event.target.value);
+  }
+
+  const handlePassword = (event: any): void => {
+    setPassword(event.target.value);
+  }
+
+  const onSubmitLoginData = () => {
     setIsLoading(true)
-    user.phone = user.phone.replace(')', '').replace('(', '').replace(' ', '').replace('-', '').replace('-', '')
-    if (!user.phone) {
+    if (!phone) {
       notify.warning({
         message: 'Iltimos telefon raqamni kiriting!',
         position: 'topRight',
       })
       setIsLoading(false)
-    } else if (!user.password) {
+    } else if (!password) {
       notify.warning({
         message: 'Iltimos parolni kiriting!',
         position: 'topRight',
       })
       setIsLoading(false)
     } else {
-      // authService.login(user).then(
-      //   (data) => {
-      //     addUserInStore()
-      //     setTimeout(() => {
-      //       if (userInfo.role === 'admin') {
-      //         router.push('/admin-dashboard')
-      //       } else {
-      //         router.push('/dashboard')
-      //       }
-      //       setIsLoading(false)
-      //       localStorage.setItem('role', userInfo.role)
-      //     }, 700)
-      //   },
-      //   (error) => {
-      //     notify.error({
-      //       message: error.response.data,
-      //       position: 'topRight',
-      //     })
-      //     setIsLoading(false)
-      //   }
-      // )
+      authService.login({
+        phone: "+" + phone.replaceAll(/[^\w\s]/g, '').replaceAll(/\s+/g, ''),
+        password: password
+      }).then(
+        (data) => {
+          addUserInStore()
+          setTimeout(() => {
+            if (userInfo.role === 'admin') {
+              navigate('/admin-dashboard')
+            } else {
+              navigate('/dashboard')
+            }
+            setIsLoading(false)
+            localStorage.setItem('role', userInfo.role)
+          }, 700)
+        },
+        (error) => {
+          notify.error({
+            message: error.response.data,
+            position: 'topRight',
+          })
+          setIsLoading(false)
+        }
+      )
     }
   }
 
@@ -120,33 +132,22 @@ export default function Login<ReactNode>(props: {
                   <img src="/images/logo.png" className="w-8 ml-2 shrink-0" alt="#" />
                   <div className="ml-2 text-lg font-semibold text-gray-900 dark:text-gray-300 grow">IT-Forelead</div>
                 </div>
-                <Switcher/>
-                {/* <button onClick={() => toggleDarkMode()}
-                  className="relative inline-block p-2 rounded-full shadow bg-slate-100 hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-700">
-                  {
-                    darkMode ? <MoonIcon className="w-5 h-5 text-black dark:text-gray-500" />
-                      : <SunIcon className="w-5 h-5 text-black dark:text-gray-500" />
-                  }
-                </button> */}
+                <Switcher />
               </div>
               <div className="flex flex-col justify-center flex-1 mb-0 md:mb-5">
                 <h3 className="text-4xl font-semibold text-gray-900 text-center dark:text-gray-300">KIRISH</h3>
                 <p className="px-10 my-5 text-sm text-center text-gray-500 dark:text-gray-400">Tizimga kirish uchun telefon
-                  raqamingiz va
-                  parolingizni kiritishgingiz lozim!</p>
+                  raqamingiz va parolingizni kiritishgingiz lozim!</p>
                 <div className="w-full mt-3 md:mt-4">
-                  <form onSubmit={() => onSubmit({
-                    phone: '+02910013920391',
-                    password: "asdadasdsas"
-                  })} className="form-horizontal md:mx-auto md:w-3/4" method="POST" action="#">
+                  <div className="form-horizontal md:mx-auto md:w-3/4">
                     <div className="flex flex-col mt-4">
-                      <input v-model="phone" v-mask="'+###(##) ###-##-##'" name="phone" type="phone"
+                      <InputMask value={phone} onChange={handlePhone} mask="+999 (99) 999-99-99"
                         className="w-full p-3 text-gray-500 bg-gray-100 border border-gray-200 outline-none text-md rounded-xl focus:bg-gray-200 focus:outline-none dark:focus:dark:bg-gray-700 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400 dark:border-gray-600"
                         placeholder="+998(99) 876-54-32" />
                     </div>
                     <div className="flex flex-col mt-4">
                       <div className="relative">
-                        <input v-model="password" name="password" type={currentType}
+                        <input onChange={handlePassword} name="password" type={currentType}
                           className="w-full p-3 text-gray-500 bg-gray-100 border border-gray-200 outline-none text-md rounded-xl focus:bg-gray-200 focus:outline-none dark:focus:dark:bg-gray-700 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400 dark:border-gray-600"
                           placeholder="Parolni kiriting..." />
                         <div className="absolute inset-y-0 right-0 z-20 flex items-center pr-3 text-sm leading-5">
@@ -163,26 +164,27 @@ export default function Login<ReactNode>(props: {
                       </div>
                     </div>
                     <div className="flex items-center mt-4">
-                      <button type="submit"
+                      <button onClick={() => onSubmitLoginData()}
                         className="flex justify-center w-full py-4 text-white bg-gray-900 text-md rounded-xl dark:text-gray-300 hover:bg-gray-900/60"
                         disabled={isLoading}>
                         {!isLoading ?
                           <span className="flex items-center cursor-pointer">Tizimga kirish</span>
-                          : <span className="flex items-center"> </span>}
-                        {/* <SpinIcon className="w-6 h-6" /> Tekshirilmoqda... */}
+                          : <span className="flex items-center">
+                            <SpinIcon className="w-6 h-6" /> Tekshirilmoqda...
+                          </span>}
                       </button>
                     </div>
-                  </form>
+                  </div>
                   <div className="relative w-1/2 mx-auto my-4 text-center">
                     <hr className="border-gray-300 dark:border-gray-600" />
                     <span
                       className="absolute px-3 text-xs text-gray-500 -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 top-1/2 left-1/2">YOKI</span>
                   </div>
                   <div className="flex items-center md:mx-auto md:w-3/4">
-                    {/* <router-link to="/register"
-                className="flex justify-center w-full py-4 text-white bg-gray-900 text-md rounded-xl dark:text-gray-300 hover:bg-gray-900/60">
-                <span className="flex items-center cursor-pointer">Ro'yhatdan o'tish</span>
-              </router-link> */}
+                    <Link to="/register"
+                      className="flex justify-center w-full py-4 text-white bg-gray-900 text-md rounded-xl dark:text-gray-300 hover:bg-gray-900/60">
+                      <span className="flex items-center cursor-pointer">Ro'yhatdan o'tish</span>
+                    </Link>
                   </div>
                 </div>
               </div>

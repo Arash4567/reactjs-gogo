@@ -1,5 +1,6 @@
 import Login from '../pages/Login'
 import Index from '../pages/Index'
+import Register from '../pages/Register'
 import ErrorPage from "../pages/ErrorPage";
 import { createBrowserRouter, RouteObject } from 'react-router-dom'
 
@@ -13,6 +14,12 @@ const publicRoutes: RouteObject[] = [
   {
     path: "/login",
     element: <Login test="test" />,
+    index: true,
+    errorElement: <ErrorPage />,
+  },  
+  {
+    path: "/register",
+    element: <Register/>,
     index: true,
     errorElement: <ErrorPage />,
   }

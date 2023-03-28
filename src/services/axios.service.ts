@@ -3,6 +3,7 @@ import refreshToken from "../utils/refresh-token";
 
 const API_URL = import.meta.env.VITE_BASE_URL;
 
+axios.defaults.baseURL = API_URL
 class AxiosService {
 
     async post(url:string, data:any, config: object) {

@@ -1,12 +1,10 @@
 import axios from 'axios'
-import { User } from '../types/interfaces';
-
-const API_URL = import.meta.env.VITE_BASE_URL;
+import { User } from '../models/interfaces';
 
 class AuthService {
   async login(user: User) {
     const response = await axios
-      .post(API_URL + '/auth/login', {
+      .post('/auth/login', {
         phone: user.phone,
         password: user.password,
       })
