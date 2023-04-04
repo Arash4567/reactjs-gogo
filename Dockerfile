@@ -1,5 +1,4 @@
-# stage as builder
-FROM node:16 as builder
+FROM node:lts-slim as builder
 
 WORKDIR /workout-frontend
 

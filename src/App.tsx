@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {
-  QueryClient,
-  QueryClientProvider
-} from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterProvider } from 'react-router-dom';
 import DashboardLayout from "./layouts/DashboardLayout";
 import LoginLayout from "./layouts/LoginLayout";
@@ -16,13 +13,15 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        {isLogin ?
-          <DashboardLayout>
-            <RouterProvider router={privateRouter} />
-          </DashboardLayout>
-          : <LoginLayout>
-            <RouterProvider router={publicRouter} />
-          </LoginLayout>}
+        {
+          isLogin ?
+            <DashboardLayout>
+              <RouterProvider router={privateRouter} />
+            </DashboardLayout>
+            : <LoginLayout>
+              <RouterProvider router={publicRouter} />
+            </LoginLayout>
+        }
       </QueryClientProvider>
     </>
   )

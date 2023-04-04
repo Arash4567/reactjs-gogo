@@ -191,7 +191,7 @@ export default function Login<ReactNode>(props: {
               <div className="text-xs text-center text-gray-400 dark:text-gray-400">All rights reserved. &copy; <a
                 href="https://t.me/trimuzsupport" className="hover:underline">IT-Forelead</a> 2022</div>
             </div>
-            <div className="hidden xl:block bg-[url('/images/bg-login.jpg')] bg-cover bg-center rounded-r-3xl md:w-2/3">
+            <div className="hidden xl:block bg-[url('/images/bg-login.jpg')] bg-cover bg-right rounded-r-3xl md:w-2/3">
               <div className="flex items-center justify-center h-full">
                 <div
                   className="w-full px-10 py-16 text-white xl:mx-16 2xl:mx-32 rounded-xl backdrop-blur-sm backdrop-contrast-50">
@@ -204,7 +204,6 @@ export default function Login<ReactNode>(props: {
           </div>
         </div >
       </div >
-
     </>
   )
 }

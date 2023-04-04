@@ -1,4 +1,5 @@
-export default function RegisterPage() {
+import React from 'react'
+export default function Register<ReactNode>() {
   return (
     <div>
       <h1>Register Page</h1>
