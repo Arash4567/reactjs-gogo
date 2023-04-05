@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
 import notify from 'izitoast'
 import 'izitoast/dist/css/iziToast.min.css'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../app/hook'
-import { toggleModal } from '../features/modal/resetPasswordModalSlice'
-import authService from '../services/auth.service'
-import userService from '../services/user.service'
-import { setUserData } from '../features/userSlice'
-import { User } from '../models/interfaces'
+import Switcher from '../components/Switcher'
 import { EyeIcon } from '../components/icons/EyeIcon'
 import { EyeSlashIcon } from '../components/icons/EyeSlashIcon'
-import Switcher from '../components/Switcher'
 import { SpinIcon } from '../components/icons/SpinIcon'
-import { Link, useNavigate } from 'react-router-dom'
-import InputMask from "react-input-mask";
+import { toggleModal } from '../features/modal/resetPasswordModalSlice'
+import { setUserData } from '../features/userSlice'
+import authService from '../services/auth.service'
+import userService from '../services/user.service'
+import InputMask from "react-input-mask";  
 
 export default function Login<ReactNode>(props: {
   test: string
@@ -141,7 +140,7 @@ export default function Login<ReactNode>(props: {
                 <div className="w-full mt-3 md:mt-4">
                   <div className="form-horizontal md:mx-auto md:w-3/4">
                     <div className="flex flex-col mt-4">
-                      <InputMask value={phone} onChange={handlePhone} mask="+999 (99) 999-99-99"
+                      <InputMask value={phone} onChange={handlePhone} mask="+\9\9\8 (99) 999-99-99"
                         className="w-full p-3 text-gray-500 bg-gray-100 border border-gray-200 outline-none text-md rounded-xl focus:bg-gray-200 focus:outline-none dark:focus:dark:bg-gray-700 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400 dark:border-gray-600"
                         placeholder="+998(99) 876-54-32" />
                     </div>
@@ -189,7 +188,7 @@ export default function Login<ReactNode>(props: {
                 </div>
               </div>
               <div className="text-xs text-center text-gray-400 dark:text-gray-400">All rights reserved. &copy; <a
-                href="https://t.me/trimuzsupport" className="hover:underline">IT-Forelead</a> 2022</div>
+                href="https://t.me/trimuzsupport" className="hover:underline">IT-Forelead</a> {(new Date).getFullYear()}</div>
             </div>
             <div className="hidden xl:block bg-[url('/images/bg-login.jpg')] bg-cover bg-right rounded-r-3xl md:w-2/3">
               <div className="flex items-center justify-center h-full">

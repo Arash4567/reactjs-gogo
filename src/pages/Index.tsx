@@ -1,8 +1,6 @@
 import axios from 'axios'
 import 'izitoast/dist/css/iziToast.min.css'
-import {
-  useInfiniteQuery
-} from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 
 export default function Index<ReactNode>() {
   const fetchProducts = async ({ pageParam = 1 }) => {

@@ -20,7 +20,7 @@ export default function Switcher() {
                     sunColor="#333"
                     checked={darkSide}
                     onChange={toggleDarkMode}
-                    size={30}
+                    size={25}
                 />
             </div>
         </>
