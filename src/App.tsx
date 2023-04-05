@@ -12,7 +12,7 @@ import { privateRouter, publicRouter } from "./router";
 const queryClient = new QueryClient()
 
 function App() {
-  const [isLogin, setIsLogin] = useState<boolean>(false)
+  const [isLogin, setIsLogin] = useState<boolean>(true)
   return (
     <>
       <QueryClientProvider client={queryClient}>
