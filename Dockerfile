@@ -12,7 +12,7 @@ RUN npm run build
 
 
 FROM nginx as production-build
-COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 RUN rm -rf /usr/share/nginx/html/*
 
