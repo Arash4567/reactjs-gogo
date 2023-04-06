@@ -15,7 +15,7 @@ export default function Switcher() {
 
     return (
         <>
-            <div className="p-1 rounded-full shadow dark:bg-gray-100">
+            <div className="p-1 rounded-full shadow bg-gray-100 dark:bg-gray-700">
                 <DarkModeSwitch
                     sunColor="#333"
                     checked={darkSide}
