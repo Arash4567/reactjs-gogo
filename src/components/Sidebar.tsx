@@ -1,38 +1,26 @@
-import { SidebarMenu } from "../models/interfaces"
+import { ISidebarMenu } from "../models/sidebar.interface"
 import MenuItem from "./MenuItem"
-import { BellIcon } from "./icons/BellIcon"
+import { HomeIcon } from "./icons/HomeIcon"
+import { CardIcon } from "./icons/CardIcon"
+import { BrowserRouter, Link } from "react-router-dom"
+import React from "react"
 
-const menus: SidebarMenu[] = [
+const menus: ISidebarMenu[] = [
   {
     url: '/',
     name: 'Home',
-    icon: <BellIcon />
+    icon: <HomeIcon className="w-7 h-7" />
   },
   {
-    url: '/1',
-    name: 'Home1',
-    icon: <BellIcon />
-  },
-  {
-    url: '/2',
-    name: 'Home2',
-    icon: <BellIcon />
-  },
-  {
-    url: '/3',
-    name: 'Home3',
-    icon: <BellIcon />
-  },
-  {
-    url: '/4',
-    name: 'Home4',
-    icon: <BellIcon />
+    url: '/balance',
+    name: 'Balance',
+    icon: <CardIcon className="w-7 h-7" />
   },
 ]
 
-export default function Sidebar<ReactNode>() {
+const Sidebar = () => {
   return (
-    <>
+    <React.Fragment>
       <div className="fixed block h-screen bg-gray-900 text-white w-80">
         <div className="bg-gray-800 h-20 flex items-center justify-center">
           <img src="/images/logo.png" className="w-14" alt="#" />
@@ -42,16 +30,20 @@ export default function Sidebar<ReactNode>() {
         </div >
         <ul className="relative space-y-3 py-14">
           {
-            menus.map(menu => (
-              <MenuItem key={menu.name} menu={menu} />
-            ))
+            menus.map(menu => {
+              return (
+                <MenuItem key={menu.name} menu={menu} />
+              )
+            })
           }
         </ul >
-        <div v-if="!sidebarStatus" className="absolute bottom-0 w-full mb-3 text-sm text-center text-gray-400 dark:text-gray-400">
+        <div className="absolute bottom-0 w-full mb-3 text-sm text-center text-gray-400 dark:text-gray-400">
           Copyright &copy; 2023 <a href="https://t.me/trimuzsupport" className="hover:underline">IT-Forelead</a>. <br />
           All Rights Reserved.
         </div>
       </div >
-    </>
+    </React.Fragment>
   )
 }
+
+export default Sidebar

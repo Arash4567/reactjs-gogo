@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
 import DashboardLayout from "./layouts/DashboardLayout";
 import LoginLayout from "./layouts/LoginLayout";
 import { privateRouter, publicRouter } from "./router";
+import Index from "./pages/Index";
+import Balance from "./pages/Balance";
 
 // Create a client
 const queryClient = new QueryClient()

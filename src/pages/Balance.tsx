@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Index<ReactNode>() {
+export default function Balance<ReactNode>() {
   return (
     <React.Fragment>
       <div>
-        INDEX
-        <Link to="/balance">Balance</Link>
+        Balance
+        <Link to={"/"}>index</Link>
       </div>
     </React.Fragment>
   )

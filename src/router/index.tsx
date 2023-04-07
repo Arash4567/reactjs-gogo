@@ -1,8 +1,9 @@
+import { createBrowserRouter, RouteObject } from 'react-router-dom'
 import Login from '../pages/Login'
 import Index from '../pages/Index'
 import Register from '../pages/Register'
 import ErrorPage from "../pages/ErrorPage";
-import { createBrowserRouter, RouteObject } from 'react-router-dom'
+import Balance from '../pages/Balance';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -16,10 +17,10 @@ const publicRoutes: RouteObject[] = [
     element: <Login test="test" />,
     index: true,
     errorElement: <ErrorPage />,
-  },  
+  },
   {
     path: "/register",
-    element: <Register/>,
+    element: <Register />,
     index: true,
     errorElement: <ErrorPage />,
   }
@@ -36,15 +37,10 @@ const privateRoutes: RouteObject[] = [
     },
   },
   {
-    path: "/admin",
-    element: <Login test='sa' />,
+    path: "/balance",
+    element: <Balance />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/salary",
-    element: <Index />,
-    errorElement: <ErrorPage />,
-  },
+  }
 ]
 
 export const publicRouter = createBrowserRouter(publicRoutes);

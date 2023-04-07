@@ -10,9 +10,3 @@ export interface UserInfo {
   lastname: string,
   role: 'admin' | 'super_admin'
 }
-
-export interface SidebarMenu {
-  url: string,
-  name: string,
-  icon: React.ReactNode | null
-}

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { User } from '../models/interfaces';
+import { User } from '../models/user.interface';
 
 class AuthService {
   async login(user: User) {

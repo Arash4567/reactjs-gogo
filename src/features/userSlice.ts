@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { UserInfo } from '../models/interfaces'
+import { UserInfo } from '../models/user.interface'
 
 const initialState: UserInfo = {
   firstname: '',
