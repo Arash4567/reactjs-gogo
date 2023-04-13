@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../app/hook";
+import { toggleModal } from "../features/modal/resetPasswordModalSlice";
 
 export default function Index<ReactNode>() {
+  const { isOpenModal } = useAppSelector((state) => state.resetPasswordModalSlice)
+  const dispatch = useAppDispatch()
   return (
     <React.Fragment>
       <div className="px-10 py-3">
@@ -17,7 +21,7 @@ export default function Index<ReactNode>() {
           </div>
           <div className="grid grid-cols-2 gap-5">
             <div className="bg-white rounded-xl capitalize h-full p-5">
-              as
+              <div onClick={() => dispatch(toggleModal(!isOpenModal))} className="bg-blue-500 p-3 rounded-xl cursor-pointer shadow text-white">bos</div>
             </div>
             <div className="bg-white rounded-xl capitalize h-full p-5">
               as
