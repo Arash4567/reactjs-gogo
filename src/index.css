@@ -4,15 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Firefox */
+html {
+  scrollbar-color: blue white;
+  scrollbar-width: thin;
+}
+
+/* WebKit and Chromiums */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: transparent;
+}
+
 body {
   font-family: 'Josefin Sans', sans-serif;
+  overflow-y: scroll;
 }
 
 /* SIDEBAR ACTIVE CLASS */
 .active div:first-child {
-  @apply bg-yellow-500
+  @apply bg-yellow-500;
 }
 
 .active div {
-  @apply text-yellow-500
+  @apply text-yellow-500;
 }

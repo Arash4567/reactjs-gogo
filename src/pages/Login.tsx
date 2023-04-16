@@ -1,5 +1,4 @@
-import notify from 'izitoast'
-import 'izitoast/dist/css/iziToast.min.css'
+
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../app/hook'
@@ -48,10 +47,10 @@ export default function Login<ReactNode>(props: {
       authService.logout()
       // store.commit('setSelectedPage', '')
     } else {
-      notify.warning({
-        message: msg,
-        position: 'bottomLeft',
-      })
+      // notify.warning({
+      //   message: msg,
+      //   position: 'bottomLeft',
+      // })
     }
   }
 
@@ -78,16 +77,16 @@ export default function Login<ReactNode>(props: {
   const onSubmitLoginData = () => {
     setIsLoading(true)
     if (!phone) {
-      notify.warning({
-        message: 'Iltimos telefon raqamni kiriting!',
-        position: 'topRight',
-      })
+      // notify.warning({
+      //   message: 'Iltimos telefon raqamni kiriting!',
+      //   position: 'topRight',
+      // })
       setIsLoading(false)
     } else if (!password) {
-      notify.warning({
-        message: 'Iltimos parolni kiriting!',
-        position: 'topRight',
-      })
+      // notify.warning({
+      //   message: 'Iltimos parolni kiriting!',
+      //   position: 'topRight',
+      // })
       setIsLoading(false)
     } else {
       authService.login({
@@ -107,10 +106,10 @@ export default function Login<ReactNode>(props: {
           }, 700)
         },
         (error) => {
-          notify.error({
-            message: error.response.data,
-            position: 'topRight',
-          })
+          // notify.error({
+          //   message: error.response.data,
+          //   position: 'topRight',
+          // })
           setIsLoading(false)
         }
       )
