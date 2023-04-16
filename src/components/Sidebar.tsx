@@ -38,7 +38,7 @@ const Sidebar = () => {
           }
         </ul >
         <div className="absolute bottom-0 w-full mb-3 text-sm text-center text-gray-400 dark:text-gray-400">
-          Copyright &copy; 2023 <a href="https://t.me/trimuzsupport" className="hover:underline">IT-Forelead</a>. <br />
+          Copyright &copy; {new Date().getFullYear()} <a href="https://t.me/trimuzsupport" className="hover:underline">IT-Forelead</a>. <br />
           All Rights Reserved.
         </div>
       </div >

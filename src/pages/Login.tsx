@@ -11,7 +11,7 @@ import { toggleModal } from '../features/modal/resetPasswordModalSlice'
 import { setUserData } from '../features/userSlice'
 import authService from '../services/auth.service'
 import userService from '../services/user.service'
-import InputMask from "react-input-mask";  
+import InputMask from "react-input-mask";
 
 export default function Login<ReactNode>(props: {
   test: string

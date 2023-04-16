@@ -7,3 +7,12 @@
 body {
   font-family: 'Josefin Sans', sans-serif;
 }
+
+/* SIDEBAR ACTIVE CLASS */
+.active div:first-child {
+  @apply bg-yellow-500
+}
+
+.active div {
+  @apply text-yellow-500
+}
